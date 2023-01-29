@@ -1,7 +1,5 @@
 {
   "extends": "tsconfig/nextjs.json",
-  "jsxImportSource": "@builder.io/qwik",
-
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
 }
