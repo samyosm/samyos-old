@@ -9,7 +9,8 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
-    "lint": "turbo run lint"
+    "lint": "eslint .",
+    "fix": "eslint . --fix"
   },
   "devDependencies": {
     "eslint-config-custom": "workspace:*",
