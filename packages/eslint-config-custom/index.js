@@ -30,4 +30,5 @@ module.exports = {
     '@typescript-eslint/consistent-type-imports': 'warn',
     'quotes': ['error', 'single']
   },
+  ignorePatterns: ['dist']
 };
