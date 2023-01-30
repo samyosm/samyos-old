@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+::selection {
+  @apply bg-indigo-500;
+}
+
+* {
+  font-family: 'Poppins', sans-serif;
+}
+
+main {
+  @apply min-h-full flex bg-slate-700;
+}
+main>section {
+  @apply w-full p-5;
+}
+
+@layer base {
+  h1 {
+    @apply text-3xl font-bold;
+  }
+  h2 {
+    @apply text-2xl;
+  }
+  h3 {
+    @apply text-xl;
+  }
+}
