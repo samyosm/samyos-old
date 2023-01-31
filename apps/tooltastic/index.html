@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./src/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700;800&display=swap" rel="stylesheet">
 
     <title>ToolTastic</title>
   </head>
@@ -44,15 +44,20 @@
       <div class="flex flex-col gap-5 w-full max-w-md">
         <div class="input">
           <p>1. What is the tweet about?</p>
-          <textarea class="inputer h-24 resize-none" name="tweet_description" id="tweet_description" placeholder="A tweet about AI"></textarea>
+          <textarea id="description_input" class="inputer h-24 resize-none" name="tweet_description" id="tweet_description" placeholder="A tweet about AI"></textarea>
         </div>
         <div class="input">
           <p>2. Select or write the tone of the tweet</p>
-          <input class="inputer" type="text" placeholder="Afraid">
+          <input id="tone_input" class="inputer" type="text" placeholder="Afraid">
         </div>
-        <button class="bg-slate-800 rounded-md p-2">Generate a tweet</button>
+        <button id="generate" class="bg-slate-800 rounded-md p-2">Generate a tweet</button>
+      </div>
+      <div class="w-full max-w-md shadow-xl bg-slate-600 p-5 rounded-md flex flex-col gap-1">
+        <h3>Reponse</h3>
+        <p id="response">Generate a tweet!</p>
       </div>
     </main>
 
+    <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
