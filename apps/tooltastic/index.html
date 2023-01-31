@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- <link rel="icon" type="image/svg+xml" href="/vite.svg" /> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./src/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700;800&display=swap" rel="stylesheet">
+
+    <title>ToolTastic</title>
+  </head>
+  <body class="flex w-full min-h-screen">
+
+    <nav class="w-full max-w-sm bg-slate-800">
+      <h2 class="text-center p-5">ToolTastic</h2>
+      <hr class="border-slate-700">
+      <div class="p-5 flex flex-col gap-5">
+        <input type="text" class="inputer bg-slate-700 placeholder:text-slate-400" placeholder="Search tool...">
+        <div class="flex flex-col gap-3">
+          <div class="nav-item">
+            <h3>Tweet Generator</h3>
+            <p>Generate a tweet from a tone and a description</p>
+          </div>
+          <div class="nav-item">
+            <h3>Twitter Bio Generator</h3>
+            <p>Generate a bio for your twitter account from a description and a tone</p>
+          </div>
+          <div class="nav-item">
+            <h3>Youtube Comment Generator</h3>
+            <p>Generate a comment for a YouTube video from a video title and a tone</p>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+
+    <main class="bg-slate-700 w-full p-36 flex flex-col items-center gap-24">
+      <div class="text-center flex flex-col gap-2">
+        <h1>Tweet Generator</h1>
+        <p class="w-full max-w-md mx-auto">Easily generate a tweet from a tone and a description, you can then post it on twitter</p>
+      </div>
+      <div class="flex flex-col gap-5 w-full max-w-md">
+        <div class="input">
+          <p>1. What is the tweet about?</p>
+          <textarea class="inputer h-24 resize-none" name="tweet_description" id="tweet_description" placeholder="A tweet about AI"></textarea>
+        </div>
+        <div class="input">
+          <p>2. Select or write the tone of the tweet</p>
+          <input class="inputer" type="text" placeholder="Afraid">
+        </div>
+        <button class="bg-slate-800 rounded-md p-2">Generate a tweet</button>
+      </div>
+    </main>
+
+  </body>
+</html>
