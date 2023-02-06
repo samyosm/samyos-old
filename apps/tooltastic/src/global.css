@@ -10,6 +10,12 @@ html, body, main {
   @apply w-full h-full min-h-screen;
 }
 
+@layer components {
+  .selected-item {
+    @apply !border-blue-500;
+  }
+}
+
 @layer base {
   p {
     @apply text-gray-700 dark:text-gray-400;
