@@ -29,7 +29,7 @@ export default component$(() => {
           crossOrigin="anonymous"
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap&text=abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
           rel="stylesheet"
         />
 
