@@ -10,12 +10,14 @@ export const SidebarLogo = component$(({ name }: { name: string }) => (
 ));
 
 export const SidebarItem = component$(
-  ({ name, description }: { name: string; description: string }) => {
+  ({ name, description, href, selected }: { name: string; description: string, href: string, selected: boolean }) => {
+
+    console.log(selected)
 
     return (
       <Link
-        href={`/${name.toLowerCase()}`}
-        class={` dark:border-gray-600 dark:hover:bg-gray-700 hover:bg-gray-200 cursor-pointer flex flex-col p-4 rounded-md border border-gray-300`}
+        href={href}
+        class={`${selected ? 'outline border-blue-500 !outline-blue-500' : ''} dark:border-gray-600 dark:hover:bg-gray-700 hover:bg-gray-200 cursor-pointer flex flex-col p-4 rounded-md border border-gray-300`}
       >
         <h5>{name}</h5>
         <p class="text-sm">{description}</p>
