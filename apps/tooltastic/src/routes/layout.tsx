@@ -5,14 +5,14 @@ import {
   SidebarItem,
   SidebarLogo,
 } from "~/components/flowbite/Sidebar";
-import { ToolTitle } from "~/components/tools/Tool";
+import { ToolBody, ToolTitle } from "~/components/tools/Tool";
 
 import menu from "./menu.json";
 
 export default component$(() => {
   const { pathname } = useLocation();
 
-  const selectedTool = menu.tools.find(({href}) => href === pathname);
+  const selectedTool = menu.tools.find(({ href }) => href === pathname);
 
   return (
     <>
@@ -34,7 +34,9 @@ export default component$(() => {
             title={selectedTool!.name}
             description={selectedTool!.description}
           />
-          <Slot />
+          <ToolBody>
+            <Slot />
+          </ToolBody>
         </section>
       </main>
     </>
