@@ -1,15 +1,12 @@
 import { component$ } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
+import { ToolBody } from "~/components/tools/Tool";
+
 
 export default component$(() => {
   return (
-    <div class="py-16 w-full flex flex-col gap-32">
-      <div class="mx-auto w-full max-w-sm text-center flex flex-col gap-2">
-        <h1 class="">Filebin</h1>
-        <p>Easily share files without registration</p>
-      </div>
-
-      <div class="w-full max-w-md mx-auto flex flex-col gap-5">
+    <>
+      <ToolBody>
         <form class="flex flex-col gap-4">
           <div class="flex flex-col gap-2">
             <h5>1. Choose a file to upload</h5>
@@ -40,8 +37,8 @@ export default component$(() => {
             Get Link
           </button>
         </form>
-      </div>
-    </div>
+      </ToolBody>
+    </>
   );
 });
 
