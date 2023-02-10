@@ -1,4 +1,4 @@
-import type { RequestHandler } from "@builder.io/qwik-city";
+import type { RequestHandler } from '@builder.io/qwik-city';
 import cityPlan from '@qwik-city-plan';
 
 export const onGet: RequestHandler = async ({ response }) => {

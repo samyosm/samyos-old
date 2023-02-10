@@ -1,6 +1,6 @@
-import { $, component$, useSignal, useStore } from "@builder.io/qwik";
-import type { DocumentHead } from "@builder.io/qwik-city";
-import { Random, MersenneTwister19937 } from "random-js";
+import { $, component$, useSignal, useStore } from '@builder.io/qwik';
+import type { DocumentHead } from '@builder.io/qwik-city';
+import { Random, MersenneTwister19937 } from 'random-js';
 
 export const random = new Random(MersenneTwister19937.autoSeed());
 
@@ -68,11 +68,11 @@ export default component$(() => {
 });
 
 export const head: DocumentHead = {
-  title: "Filebin - Easily share files without registration",
+  title: 'Filebin - Easily share files without registration',
   meta: [
     {
-      name: "description",
-      content: "Qwik site description",
+      name: 'description',
+      content: 'Qwik site description',
     },
   ],
 };

@@ -1,13 +1,13 @@
-import { component$, Slot } from "@builder.io/qwik";
-import { useLocation } from "@builder.io/qwik-city";
+import { component$, Slot } from '@builder.io/qwik';
+import { useLocation } from '@builder.io/qwik-city';
 import {
   Sidebar,
   SidebarItem,
   SidebarLogo,
-} from "~/components/flowbite/Sidebar";
-import { ToolBody, ToolTitle } from "~/components/tools/Tool";
+} from '~/components/flowbite/Sidebar';
+import { ToolBody, ToolTitle } from '~/components/tools/Tool';
 
-import menu from "./menu.json";
+import menu from './menu.json';
 
 export default component$(() => {
   const { pathname } = useLocation();

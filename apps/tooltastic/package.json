@@ -22,6 +22,7 @@
     "qwik": "qwik"
   },
   "devDependencies": {
+    "tsconfig": "workspace:*",
     "@builder.io/qwik": "0.17.4",
     "@builder.io/qwik-city": "0.0.128",
     "@types/eslint": "8.21.0",
@@ -43,7 +44,9 @@
     "vite-tsconfig-paths": "3.5.0"
   },
   "dependencies": {
+    "@types/qrcode": "^1.5.0",
     "flowbite": "^1.6.3",
+    "qrcode": "^1.5.1",
     "random-js": "^2.1.0"
   }
 }

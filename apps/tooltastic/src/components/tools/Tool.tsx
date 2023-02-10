@@ -1,4 +1,4 @@
-import { component$, Slot } from "@builder.io/qwik";
+import { component$, Slot } from '@builder.io/qwik';
 
 export const ToolTitle = component$(
   ({ title, description }: { title: string; description: string }) => {
