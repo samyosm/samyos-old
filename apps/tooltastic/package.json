@@ -43,6 +43,7 @@
     "vite-tsconfig-paths": "3.5.0"
   },
   "dependencies": {
-    "flowbite": "^1.6.3"
+    "flowbite": "^1.6.3",
+    "random-js": "^2.1.0"
   }
 }

@@ -12,8 +12,6 @@ export const SidebarLogo = component$(({ name }: { name: string }) => (
 export const SidebarItem = component$(
   ({ name, description, href, selected }: { name: string; description: string, href: string, selected: boolean }) => {
 
-    console.log(selected)
-
     return (
       <Link
         href={href}
