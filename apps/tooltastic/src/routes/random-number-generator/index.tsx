@@ -1,4 +1,4 @@
-import { $, component$, useClientEffect$, useSignal, useStore } from "@builder.io/qwik";
+import { $, component$, useSignal, useStore } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
 import { Random, MersenneTwister19937 } from "random-js";
 
