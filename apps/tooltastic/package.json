@@ -22,7 +22,6 @@
     "qwik": "qwik"
   },
   "devDependencies": {
-    "tsconfig": "workspace:*",
     "@builder.io/qwik": "0.17.4",
     "@builder.io/qwik-city": "0.0.128",
     "@types/eslint": "8.21.0",
@@ -37,6 +36,7 @@
     "postcss": "^8.4.16",
     "prettier": "2.8.3",
     "tailwindcss": "^3.1.8",
+    "tsconfig": "workspace:*",
     "typescript": "4.9.5",
     "undici": "5.16.0",
     "vercel": "^28.4.17",
@@ -44,6 +44,7 @@
     "vite-tsconfig-paths": "3.5.0"
   },
   "dependencies": {
+    "@svgdotjs/svg.js": "^3.1.2",
     "@types/qrcode": "^1.5.0",
     "flowbite": "^1.6.3",
     "qrcode": "^1.5.1",

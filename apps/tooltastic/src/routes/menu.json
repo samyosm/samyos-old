@@ -14,6 +14,11 @@
       "name": "QR Code Generator",
       "description": "Easily create qr codes",
       "href": "/qr-code-generator/"
+    },
+    {
+      "name": "Notion Cover Generator",
+      "description": "Easily generate covers for your Notion pages",
+      "href": "/notion-cover/"
     }
   ]
 }
