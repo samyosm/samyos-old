@@ -25,6 +25,7 @@ importers:
       eslint: 8.33.0
       eslint-plugin-qwik: 0.17.4
       flowbite: ^1.6.3
+      fuse.js: ^6.6.2
       node-fetch: 3.3.0
       postcss: ^8.4.16
       prettier: 2.8.3
@@ -41,6 +42,7 @@ importers:
       '@svgdotjs/svg.js': 3.1.2
       '@types/qrcode': 1.5.0
       flowbite: 1.6.3
+      fuse.js: 6.6.2
       qrcode: 1.5.1
       random-js: 2.1.0
     devDependencies:
@@ -2676,6 +2678,11 @@ packages:
 
   /functions-have-names/1.2.3:
     resolution: {integrity: sha512-xckBUXyTIqT97tq2x2AMb+g163b5JFysYk0x4qxNFwbfQkmNZoiRHb6sPzI9/QV33WeuvVYBUIiD4NzNIyqaRQ==}
+    dev: false
+
+  /fuse.js/6.6.2:
+    resolution: {integrity: sha512-cJaJkxCCxC8qIIcPBF9yGxY0W/tVZS3uEISDxhYIdtk8OL93pe+6Zj7LjCqVV4dzbqcriOZ+kQ/NE4RXZHsIGA==}
+    engines: {node: '>=10'}
     dev: false
 
   /gauge/3.0.2:
