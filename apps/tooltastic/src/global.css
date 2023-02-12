@@ -3,10 +3,12 @@
 @tailwind utilities;
 
 * {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
-html, body, main {
+html,
+body,
+main {
   @apply w-full h-full min-h-screen;
 }
 
