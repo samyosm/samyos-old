@@ -68,7 +68,7 @@ export const Sidebar = component$(({ tools }: { tools: Tool[] }) => {
   });
 
   return (
-    <nav class="w-full max-w-[18rem]">
+    <nav class="w-full md:max-w-[18rem]">
       <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
         <Slot name="logo" />
         <div class="space-y-2">

@@ -13,7 +13,7 @@ export const ToolTitle = component$(
 
 export const ToolBody = component$(() => {
   return (
-    <div class="w-full max-w-md mx-auto flex flex-col gap-10">
+    <div class="w-full max-w-md px-5 sm:px-0 mx-auto flex flex-col gap-10">
       <Slot />
     </div>
   );

@@ -21,7 +21,7 @@ export const ColorChoice = component$(
         style={{
           backgroundColor: hex,
         }}
-        class={`w-16 h-16 cursor-pointer text-white rounded-md flex justify-center items-center shadow-md ${
+        class={`w-14 h-14 cursor-pointer text-white rounded-md flex justify-center items-center shadow-md ${
           chosenHex == hex ? 'outline outline-slate-800 dark:outline-white' : ''
         }`}
       >
@@ -91,7 +91,7 @@ export default component$(() => {
           </div>
           <div class="flex flex-col gap-2">
             <h5>2. Choose a color</h5>
-            <div class="flex justify-between">
+            <div class="flex justify-center flex-wrap gap-2">
               <ColorChoice
                 onClick$={handleColorPress}
                 chosenHex={chosenHex.value}

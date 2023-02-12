@@ -17,11 +17,11 @@ export default component$(() => {
 
   return (
     <>
-      <main class="w-full h-full flex bg-gray-50 dark:bg-gray-900">
+      <main class="w-full h-fit flex flex-col-reverse md:flex-row bg-gray-50 dark:bg-gray-900">
         <Sidebar tools={menu.tools}>
           <SidebarLogo name="ToolTastic" q:slot="logo" />
         </Sidebar>
-        <section class="py-16 w-full flex flex-col gap-32">
+        <section class="py-16 w-full min-h-[90vh] md:h-full flex flex-col gap-32">
           <ToolTitle
             title={selectedTool!.name}
             description={selectedTool!.description}
