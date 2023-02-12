@@ -47,6 +47,7 @@
     "@svgdotjs/svg.js": "^3.1.2",
     "@types/qrcode": "^1.5.0",
     "flowbite": "^1.6.3",
+    "fuse.js": "^6.6.2",
     "qrcode": "^1.5.1",
     "random-js": "^2.1.0"
   }
