@@ -1,4 +1,4 @@
-import { $, component$, useSignal, useStore } from '@builder.io/qwik';
+import { $, component$, useClientEffect$, useSignal, useStore } from '@builder.io/qwik';
 import type { DocumentHead } from '@builder.io/qwik-city';
 import { SVG } from '@svgdotjs/svg.js';
 import { ImagePreview } from '~/components/system/ImagePreview';
@@ -40,30 +40,39 @@ export default component$(() => {
     content: '',
   });
 
-  const handleSubmit = $(async () => {
-    const draw = SVG().size(150, 50);
-
-    draw.rect(1500, 500).fill(chosenHex.value || '#ccc');
-
-    draw
-      .text((add) => add.tspan(values.content))
-      .fill('#fff')
-      .font({ size: 12, family: 'Verdana', weight: 'bold' })
-      .center(150 / 2, 50 / 2);
-
-    generatedSVG.value = 'data:image/svg+xml;base64,' + window.btoa(draw.svg());
-  });
 
   const handleColorPress = $((hex: string) => {
     chosenHex.value = hex;
   });
 
+  useClientEffect$(({track}) => {
+    track(() => values.content);
+    track(() => chosenHex.value);
+
+    const draw = SVG().size(150, 50);
+
+    draw.rect(150, 50).fill(chosenHex.value || '#ccc');
+
+    draw
+      .text((add) => add.tspan(values.content))
+      .fill('#fff')
+      .font({ size: values.content.length * (-1/6) + 64/5  , family: 'Verdana', weight: 'bold' })
+      .attr({
+        'dominant-baseline': 'middle',
+        'text-anchor': 'middle',
+        y: '50%',
+        x: '50%'
+      })
+
+    generatedSVG.value = 'data:image/svg+xml;base64,' + window.btoa(draw.svg());
+
+
+  })
+
   return (
     <>
       <div class="flex flex-col gap-4">
-        <form
-          preventdefault:submit
-          onSubmit$={handleSubmit}
+        <div
           class="flex flex-col gap-6"
         >
           <div class="flex flex-col gap-2">
@@ -121,15 +130,9 @@ export default component$(() => {
               />
             </div>
           </div>
-          <button
-            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-            type="submit"
-          >
-            Get Image
-          </button>
-        </form>
+        </div>
       </div>
-      {generatedSVG.value && (
+      {generatedSVG.value && chosenHex.value && values.content && (
         <ImagePreview label="notion-cover.svg" alt="Notion Cover" imageSrc={generatedSVG.value!} />
       )}
     </>
