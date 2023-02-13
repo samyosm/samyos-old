@@ -6,6 +6,9 @@ import {
 } from '@builder.io/qwik-city';
 import { RouterHead } from './components/router-head/router-head';
 
+import '../../tooltastic-api/clients/OpenAI';
+import '../../tooltastic-api/clients/Redis';
+
 import globalStyles from './global.css?inline';
 
 export default component$(() => {
