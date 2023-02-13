@@ -7,7 +7,7 @@
     },
     {
       "name": "Random number generator",
-      "description":"Easily share files without registration",
+      "description":"Generate random numbers with ease",
       "href": "/random-number-generator/"
     },
     {
@@ -19,6 +19,11 @@
       "name": "Notion Cover Generator",
       "description": "Easily generate covers for your Notion pages",
       "href": "/notion-cover/"
+    },
+    {
+      "name": "Tweet Bio Generator",
+      "description": "Generate a new and fun bio for your tweeter account",
+      "href": "/tweet-bio/"
     }
   ]
 }

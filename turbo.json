@@ -2,6 +2,10 @@
   "$schema": "https://turbo.build/schema.json",
   "pipeline": {
     "build": {
+      "env": [
+        "OPENAI_API_KEY",
+        "TOOLTASTIC_REDIS_PASSWORD"
+      ],
       "dependsOn": ["^build"],
       "outputs": ["dist/**", ".next/**"]
     },
