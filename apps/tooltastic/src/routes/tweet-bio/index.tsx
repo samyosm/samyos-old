@@ -23,7 +23,7 @@ export default component$(() => {
 
   const handleSubmit = $(async () => {
     const ip = await getIP();
-    const response = await fetch('http://api.tooltastic.app/api/tweet-bio', {
+    const response = await fetch('https://api.tooltastic.app/api/tweet-bio', {
       method: 'post',
       body: JSON.stringify({
         description: params.description,
