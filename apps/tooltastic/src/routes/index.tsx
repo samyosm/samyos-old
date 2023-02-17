@@ -1,5 +1,5 @@
 import type { RequestHandler } from '@builder.io/qwik-city';
 
-export const onGet: RequestHandler = async ({ response }) => {
-  throw response.redirect('/filebin/');
+export const onGet: RequestHandler = async ({ redirect }) => {
+  throw redirect(301, '/filebin/');
 };

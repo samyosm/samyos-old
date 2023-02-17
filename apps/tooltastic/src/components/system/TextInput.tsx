@@ -6,10 +6,11 @@ type Props = {
   onInput$?: (value: string) => void;
   required?: boolean;
   value?: string;
+  name?: string;
 };
 
 export const TextInput = component$(
-  ({ placeholder, onChange$, onInput$, required = true, value }: Props) => {
+  ({ placeholder, onChange$, onInput$, required = true, value, name }: Props) => {
     return (
       <input
         type="text"
@@ -21,6 +22,7 @@ export const TextInput = component$(
         }
         value={value}
         required={required}
+        name={name}
       />
     );
   }
