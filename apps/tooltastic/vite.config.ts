@@ -10,6 +10,9 @@ export default defineConfig(() => {
       qwikVite(),
       tsconfigPaths(),
     ],
+    define: {
+      'process.env': process.env
+    },
     preview: {
       headers: {
         'Cache-Control': 'public, max-age=600',

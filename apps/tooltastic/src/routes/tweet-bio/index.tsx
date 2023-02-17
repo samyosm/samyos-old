@@ -1,10 +1,11 @@
 import {
+  $,
   component$,
   useBrowserVisibleTask$,
   useSignal,
+  useStore,
 } from '@builder.io/qwik';
 import type { DocumentHead } from '@builder.io/qwik-city';
-import { action$, Form } from '@builder.io/qwik-city';
 import { TextInput } from '~/components/system/TextInput';
 import { openai } from '../../../clients/OpenAI';
 
@@ -18,66 +19,96 @@ export const getIP = async () => {
 
 export const DEFAULT_TOKEN_COUNT = 1000;
 
-export const useAddUser = action$(async ({ description, mood, ip }) => {
-  console.log({ description, mood, ip });
-
+export const Generate = async ({ip, description, mood}: {ip: string, description: string, mood: string}) => {
   const trackerRef = collection(fdb, 'openai_token_tracker');
 
-  const userDoc = doc(trackerRef, ip as string);
-  const user = await getDoc(userDoc);
-
-  const exist = user.exists();
-  const originalTokenLeft = user.data()?.tokenLeft;
-
-  if (exist && originalTokenLeft <= 0)
+    const userDoc = doc(trackerRef, ip);
+    const user = await getDoc(userDoc);
+  
+    const exist = user.exists();
+    const originalTokenLeft = user.data()?.tokenLeft;
+  
+    if (exist && originalTokenLeft <= 0)
+      return {
+        text: 'You do not have enough token',
+        tokenUsed: 0,
+        tokenLeft: originalTokenLeft,
+      };
+  
+    const response = await openai.createCompletion({
+      model: 'text-davinci-003',
+      best_of: 1,
+      max_tokens: 200,
+      temperature: 0,
+      prompt: `Generate a Twitter bio with the following description: ${description}; and the following mood: ${mood}`,
+    });
+  
+    const tokenUsed = response.data.usage!.total_tokens;
+    const tokenLeft = exist
+      ? originalTokenLeft - tokenUsed
+      : DEFAULT_TOKEN_COUNT - tokenUsed;
+  
+    await setDoc(userDoc, {
+      tokenLeft,
+    });
+  
+    if (!response) return;
+  
     return {
-      text: 'You do not have enough token',
-      tokenUsed: 0,
-      tokenLeft: originalTokenLeft,
+      text: response.data.choices[0].text,
+      tokenUsed,
+      tokenLeft,
     };
-
-  const response = await openai.createCompletion({
-    model: 'text-davinci-003',
-    best_of: 1,
-    max_tokens: 200,
-    temperature: 0,
-    prompt: `Generate a Twitter bio with the following description: ${description}; and the following mood: ${mood}`,
-  });
-
-  const tokenUsed = response.data.usage!.total_tokens;
-  const tokenLeft = exist
-    ? originalTokenLeft - tokenUsed
-    : DEFAULT_TOKEN_COUNT - tokenUsed;
-
-  await setDoc(userDoc, {
-    tokenLeft,
-  });
-
-  if (!response) return;
-
-  return {
-    text: response.data.choices[0].text,
-    tokenUsed,
-    tokenLeft,
-  };
-});
+}
 
 export default component$(() => {
-  const ip = useSignal('');
-
-  useBrowserVisibleTask$(async () => {
-    ip.value = await getIP();
+  const values = useStore({
+    description: '',
+    mood: '',
+    ip: '',
   });
 
-  const action = useAddUser();
+  useBrowserVisibleTask$(async () => {
+    values.ip = await getIP();
+  });
+
+  const generated = useStore({
+    text: '',
+    tokenUsed: 0,
+    tokenLeft: 0,
+  });
+
+  const requestStatus = useSignal<'unstarted' | 'pending' | 'done'>('unstarted');
+
+  const handleSubmit = $(() => {
+    requestStatus.value = 'pending';
+    Generate({
+      ip: values.ip,
+      description: values.description,
+      mood: values.mood,
+    }).then((e) => {
+      const {text, tokenUsed, tokenLeft} = e!;
+      generated.text = text!;
+      generated.tokenLeft = tokenLeft;
+      generated.tokenUsed = tokenUsed;
+
+      requestStatus.value = 'done';
+    });
+  });
 
   return (
     <>
-      <Form class="flex flex-col gap-4" action={action}>
+      <form class="flex flex-col gap-4"
+      preventdefault:submit
+      onSubmit$={handleSubmit}
+      >
         <div class="flex flex-col gap-2">
           <h5>1. Chose what should the bio be about</h5>
           <TextInput
             name="description"
+            required={true}
+            value={values.description}
+            onChange$={(e) => values.description = e}
             placeholder="A twitter bio about cars, and coding"
           />
         </div>
@@ -87,6 +118,8 @@ export default component$(() => {
             name="mood"
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             required={true}
+            value={values.mood}
+            onChange$={(e) => values.mood = e.target.value}
           >
             <option>Fun</option>
             <option>Happy</option>
@@ -101,35 +134,34 @@ export default component$(() => {
             <option>Funny</option>
           </select>
         </div>
-        <input type="text" value={ip.value} name="ip" hidden />
         <button
           class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
           type="submit"
         >
           Get Twitter Bio
         </button>
-      </Form>
-      {action.value?.text && (
+      </form>
+      {requestStatus.value === 'done' && (
         <>
           <div class="w-full text-gray-900 dark:text-white p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-            {action.value.text}
+            {generated.text}
           </div>
           <div class="w-full text-gray-700 dark:text-gray-300">
             This prompt used
             <span class="text-red-500 font-bold">
               {' '}
-              {action.value.tokenUsed}{' '}
+              {generated.tokenUsed}{' '}
             </span>
             token. You have
             <span class="text-green-500 font-bold">
-              {` ${action.value.tokenLeft} `}
+              {` ${generated.tokenLeft} `}
             </span>
             token left.
           </div>
         </>
       )}
 
-      {action.isRunning && (
+      {requestStatus.value === 'pending' && (
         <>
           <div class="flex justify-center items-center w-full text-gray-900 dark:text-white p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <div role="status">
