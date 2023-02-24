@@ -40,6 +40,7 @@ type Tool = {
   name: string;
   description: string;
   href: string;
+  disabled?: boolean;
 };
 
 export const Sidebar = component$(({ tools }: { tools: Tool[] }) => {
@@ -48,7 +49,7 @@ export const Sidebar = component$(({ tools }: { tools: Tool[] }) => {
     threshold: 0.4
   } satisfies Fuse.IFuseOptions<Tool>;
 
-  const { pathname } = useLocation();
+  const { url: { pathname } } = useLocation();
 
   const filteredTools = useSignal(tools);
 
@@ -63,7 +64,6 @@ export const Sidebar = component$(({ tools }: { tools: Tool[] }) => {
 
     const searchResults = fuse.search(value);
 
-    console.log(searchResults);
     filteredTools.value = searchResults.map(e => e.item);
   });
 
@@ -80,7 +80,7 @@ export const Sidebar = component$(({ tools }: { tools: Tool[] }) => {
               handleInputChange((e.target as HTMLInputElement).value)
             }
           />
-          {filteredTools.value.map(({ name, href, description }) => (
+          {filteredTools.value.filter((e) => e?.disabled !== true).map(({ name, href, description }) => (
             <SidebarItem
               selected={pathname === href}
               href={href}
