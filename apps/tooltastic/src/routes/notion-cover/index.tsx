@@ -1,4 +1,4 @@
-import { $, component$, useClientEffect$, useSignal, useStore } from '@builder.io/qwik';
+import { $, component$, useBrowserVisibleTask$, useSignal, useStore } from '@builder.io/qwik';
 import type { DocumentHead } from '@builder.io/qwik-city';
 import { SVG } from '@svgdotjs/svg.js';
 import { ImagePreview } from '~/components/system/ImagePreview';
@@ -45,7 +45,7 @@ export default component$(() => {
     chosenHex.value = hex;
   });
 
-  useClientEffect$(({track}) => {
+  useBrowserVisibleTask$(({track}) => {
     track(() => values.content);
     track(() => chosenHex.value);
 
