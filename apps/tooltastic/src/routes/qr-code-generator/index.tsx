@@ -56,11 +56,11 @@ export default component$(() => {
 });
 
 export const head: DocumentHead = {
-  title: 'Filebin - Easily share files without registration',
+  title: 'QR Code Generator - Easily create qr codes',
   meta: [
     {
       name: 'description',
-      content: 'Qwik site description',
+      content: 'A tool that will allow you to generate a Qr Code very quickly',
     },
   ],
 };

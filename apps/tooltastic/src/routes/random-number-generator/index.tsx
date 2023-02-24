@@ -68,11 +68,11 @@ export default component$(() => {
 });
 
 export const head: DocumentHead = {
-  title: 'Filebin - Easily share files without registration',
+  title: 'Random number generator - Generate better random numbers with ease',
   meta: [
     {
       name: 'description',
-      content: 'Qwik site description',
+      content: 'A tool that will allow you to generate good pseudo-random numbers with ease',
     },
   ],
 };

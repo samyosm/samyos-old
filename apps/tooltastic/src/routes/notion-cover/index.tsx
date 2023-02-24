@@ -140,11 +140,11 @@ export default component$(() => {
 });
 
 export const head: DocumentHead = {
-  title: 'Notion cover',
+  title: 'Notion Cover Generator - Easily generate covers for your Notion pages',
   meta: [
     {
       name: 'description',
-      content: 'Qwik site description',
+      content: 'A tool that will allow you to very easily create a minimalistic Notion Cover for your Notion pages',
     },
   ],
 };

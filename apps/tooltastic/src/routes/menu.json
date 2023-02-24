@@ -8,7 +8,7 @@
     },
     {
       "name": "Random number generator",
-      "description":"Generate random numbers with ease",
+      "description":"Generate better random numbers with ease",
       "href": "/random-number-generator/"
     },
     {
@@ -23,8 +23,8 @@
     },
     {
       "name": "Tweet Bio Generator",
-      "description": "Generate a new and fun bio for your tweeter account",
-      "href": "/tweet-bio/"
+      "description": "Generate a new and fun bio for your twitter account",
+      "href": "/twitter-bio/"
     }
   ]
 }
